@@ -15,10 +15,6 @@
     <p>{{$d}}</p>
     @endforeach
     <br><br>
-    @foreach ($data['terbaik'] as $d)
-    <p>{{$d}}</p>
-    @endforeach
-    <br><br>
     @foreach ($data['buku'] as $d)
     <p>{{$d}}</p>
     @endforeach

@@ -9,6 +9,8 @@ use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ViewController::class, 'landing'])->name('landing');
+Route::get('/pencarian/{query}', [ViewController::class, 'search'])->name('search');
+Route::get('/detail/{id}', [ViewController::class, 'detail'])->name('detail');
 
 Route::get('/login', [AuthController::class,'login'])->name('login');
 Route::get('/register', [AuthController::class,'register'])->name('register');

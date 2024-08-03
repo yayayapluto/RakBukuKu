@@ -12,7 +12,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     public function borrowRecords() {
-        $this->hasMany(BorrowRecord::class, 'id');
+        $this->hasMany(BorrowRecord::class, 'id_anggota');
     }
 
     protected $fillable = [
