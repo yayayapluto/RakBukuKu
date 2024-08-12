@@ -13,15 +13,17 @@ class ViewController extends Controller
         $thumbnail_dir = "public/foto_profil";
         $thumbnail = Storage::files($thumbnail_dir);
 
-        $categories = Category::select('nama')->get();
+        $categories = Category::select('nama')->limit(16)->get();
+        $categories2 = Category::select('nama')->inRandomOrder()->limit(1)->get();
 
         // $borrow_records = BorrowRecord::withCount('user')->orderBy('user_count', 'asc')->get();
 
-        $books = Book::select('judul', 'pengarang', 'stok', 'id')->get();
+        $books = Book::select('judul', 'pengarang', 'stok', 'id')->limit(5)->get();
 
         $data = [
             "thumbnail" => $thumbnail,
             "kategori" => $categories,
+            "kategori2" => $categories2,
             "buku" => $books
         ];
 
@@ -49,4 +51,5 @@ class ViewController extends Controller
 
         return view('other.detailBuku', compact('data'));
     }
+    
 }

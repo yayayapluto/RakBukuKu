@@ -9,6 +9,9 @@ use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ViewController::class, 'landing'])->name('landing');
+// Route::get('/index',function (){
+//     return view ('index');
+// });
 Route::get('/pencarian/{query}', [ViewController::class, 'search'])->name('search');
 Route::get('/detail/{id}', [ViewController::class, 'detail'])->name('detail');
 
