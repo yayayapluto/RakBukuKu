@@ -9,12 +9,13 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function buku() {
-        return $this->hasMany(Book::class, 'id');
-    }
-
     protected $fillable = [
         'nama'
     ];
 
+    // A Category has many Books
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'id_kategori');
+    }
 }

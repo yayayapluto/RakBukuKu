@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        User::factory()->count(50)->create();
-        Book::factory()->count(50)->create();
-        BorrowRecord::factory()->count(40)->create();
+        User::factory()->count(10)->create();
+        Book::factory()->count(15)->create();
+        BorrowRecord::factory()->count(20)->create();
     }
 }
 

@@ -9,10 +9,6 @@ class BorrowRecord extends Model
 {
     use HasFactory;
 
-    public function user() {
-        $this->belongsTo(User::class, 'id_anggota');
-    }
-
     protected $fillable = [
         'pinjam_id',
         'id_anggota',
@@ -24,4 +20,15 @@ class BorrowRecord extends Model
         'tgl_kembali',
     ];
 
+    // A BorrowRecord belongs to a User (anggota)
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_anggota');
+    }
+
+    // A BorrowRecord belongs to a Book
+    public function book()
+    {
+        return $this->belongsTo(Book::class, 'id_buku');
+    }
 }

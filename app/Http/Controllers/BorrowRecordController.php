@@ -12,7 +12,8 @@ class BorrowRecordController extends Controller
      */
     public function index()
     {
-        //
+        $borrowRecords = BorrowRecord::all();
+        return view('borrow_records.index', compact('borrowRecords'));
     }
 
     /**
@@ -20,7 +21,7 @@ class BorrowRecordController extends Controller
      */
     public function create()
     {
-        //
+        return view('borrow_records.create');
     }
 
     /**
@@ -28,7 +29,18 @@ class BorrowRecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'id_anggota' => 'required|exists:users,id',
+            'id_buku' => 'required|exists:books,id',
+            'status' => 'required|string',
+            'tgl_pinjam' => 'required|date',
+            'lama_pinjam' => 'required|integer',
+            'tgl_balik' => 'nullable|date',
+            'tgl_kembali' => 'nullable|date',
+        ]);
+
+        $borrowRecord = BorrowRecord::create($validatedData);
+        return redirect()->route('borrow_records.index')->with('success', 'Borrow Record created successfully!');
     }
 
     /**
@@ -36,7 +48,7 @@ class BorrowRecordController extends Controller
      */
     public function show(BorrowRecord $borrowRecord)
     {
-        //
+        return view('borrow_records.show', compact('borrowRecord'));
     }
 
     /**
@@ -44,7 +56,7 @@ class BorrowRecordController extends Controller
      */
     public function edit(BorrowRecord $borrowRecord)
     {
-        //
+        return view('borrow_records.edit', compact('borrowRecord'));
     }
 
     /**
@@ -52,7 +64,18 @@ class BorrowRecordController extends Controller
      */
     public function update(Request $request, BorrowRecord $borrowRecord)
     {
-        //
+        $validatedData = $request->validate([
+            'id_anggota' => 'sometimes|required|exists:users,id',
+            'id_buku' => 'sometimes|required|exists:books,id',
+            'status' => 'sometimes|required|string',
+            'tgl_pinjam' => 'sometimes|required|date',
+            'lama_pinjam' => 'sometimes|required|integer',
+            'tgl_balik' => 'nullable|date',
+            'tgl_kembali' => 'nullable|date',
+        ]);
+
+        $borrowRecord->update($validatedData);
+        return redirect()->route('borrow_records.index')->with('success', 'Borrow Record updated successfully!');
     }
 
     /**
@@ -60,6 +83,7 @@ class BorrowRecordController extends Controller
      */
     public function destroy(BorrowRecord $borrowRecord)
     {
-        //
+        $borrowRecord->delete();
+        return redirect()->route('borrow_records.index')->with('success', 'Borrow Record deleted successfully!');
     }
 }

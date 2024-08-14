@@ -63,7 +63,6 @@
 
     <!-- Book Details Section -->
     <main class="max-w-4xl w-full mx-auto mt-12 bg-white rounded-lg shadow-md p-8">
-        @foreach($data as $book)
         <div class="flex flex-col items-center">
             <img src="{{ $book->sampul }}" alt="Book Cover" class="rounded-lg shadow-md mb-8 w-64 h-96 object-cover">
             <div class="w-full">
@@ -77,7 +76,6 @@
                 <p class="text-gray-700 mt-4">{{ $book->isi }}</p>
             </div>
         </div>
-        @endforeach
     </main>
 </body>
 </html>

@@ -9,14 +9,6 @@ class Book extends Model
 {
     use HasFactory;
 
-    public function kategori() {
-        return $this->belongsTo(Category::class, 'id');
-    }
-
-    public function rak() {
-        return $this->belongsTo(Rack::class, 'id');
-    }
-
     protected $fillable = [
         'buku_id',
         'id_kategori',
@@ -33,4 +25,21 @@ class Book extends Model
         'tgl_masuk',
     ];
 
+    // A Book belongs to a Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'id_kategori');
+    }
+
+    // A Book belongs to a Rack
+    public function rack()
+    {
+        return $this->belongsTo(Rack::class, 'id_rak');
+    }
+
+    // A Book can have many BorrowRecords
+    public function borrowRecords()
+    {
+        return $this->hasMany(BorrowRecord::class, 'id_buku');
+    }
 }

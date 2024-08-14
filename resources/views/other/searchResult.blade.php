@@ -65,9 +65,9 @@
     <main class="max-w-7xl w-full mx-auto mt-12 bg-white rounded-xl shadow-md p-8">
         <!-- Search Results -->
         <h2 class="font-semibold text-lg mb-5">Search Results</h2>
-        <b>Total pencarian ditemukan: {{count($data)}}</b>
+        <b>Total pencarian ditemukan: {{ count($books) }}</b>
         <ul class="space-y-4">
-            @forelse($data as $buku)
+            @forelse($books as $buku)
                 <li class="bg-gray-50 p-4 rounded-lg border border-gray-200">
                     <h3 class="font-medium text-gray-900">{{ $buku->judul }}</h3>
                     <p class="text-gray-700">Pengarang: {{ $buku->pengarang }}</p>
