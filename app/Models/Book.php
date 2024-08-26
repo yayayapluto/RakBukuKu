@@ -26,13 +26,13 @@ class Book extends Model
     ];
 
     // A Book belongs to a Category
-    public function category()
+    public function kategori()
     {
         return $this->belongsTo(Category::class, 'id_kategori');
     }
 
     // A Book belongs to a Rack
-    public function rack()
+    public function rak()
     {
         return $this->belongsTo(Rack::class, 'id_rak');
     }

@@ -12,8 +12,8 @@ class BorrowRecordController extends Controller
      */
     public function index()
     {
-        $borrowRecords = BorrowRecord::all();
-        return view('borrow_records.index', compact('borrowRecords'));
+        $data = BorrowRecord::all();
+        return view('borrow_records.index', compact('data'));
     }
 
     /**

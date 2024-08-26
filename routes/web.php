@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BorrowRecordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RackController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewDataController;
+use App\Models\BorrowRecord;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ViewDataController::class, 'landing'])->name('landing');
@@ -13,9 +15,7 @@ Route::get('/buku/{id}', [ViewDataController::class, 'bookDetail'])->name('bookD
 Route::get('/kategori', [ViewDataController::class, 'categories'])->name('categories');
 Route::post('/pencarian', [ViewDataController::class, 'search'])->name('search');
 Route::get('/dashboard', [ViewDataController::class, 'dashboard'])->name('dashboard');
-// Route::get('/index',function (){
-//     return view ('index');
-// });
+
 Route::get('/pencarian/{query}', [ViewDataController::class, 'search'])->name('search');
 Route::get('/detail/{id}', [ViewDataController::class, 'detail'])->name('detail');
 
@@ -29,3 +29,4 @@ Route::resource('users', UserController::class);
 Route::resource('books', BookController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('racks', RackController::class);
+Route::resource('borrow', BorrowRecordController::class);
