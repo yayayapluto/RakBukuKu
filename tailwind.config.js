@@ -19,6 +19,10 @@ export default {
         IsiDashboard2: '#4DA0DB',
         IsiDashboard3: '#695B5B',
         IsiDashboard4: '#2F80ED',
+        register: '#F2F2F2',
+        textInput: '#5B5858',
+        home: '#CECECE',
+        edit: '#0C8D28'
       },
       rotate: {
         '27': '270deg',

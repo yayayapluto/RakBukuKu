@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ViewDataController::class, 'landing'])->name('landing');
 Route::get('/buku/{id}', [ViewDataController::class, 'bookDetail'])->name('bookDetail');
 Route::get('/kategori', [ViewDataController::class, 'categories'])->name('categories');
-Route::post('/pencarian', [ViewDataController::class, 'search'])->name('search');
 Route::get('/dashboard', [ViewDataController::class, 'dashboard'])->name('dashboard');
 
 Route::get('/pencarian/{query}', [ViewDataController::class, 'search'])->name('search');

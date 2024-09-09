@@ -12,9 +12,9 @@
     <nav class="bg-white h-16 shadow-md">
         <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4 h-full">
             <!-- Logo -->
-            <a href="#" class="flex items-center">
+            <!-- <a href="#" class="flex items-center">
                 <img src="{{ asset('storage/icon.svg') }}" class="h-12 w-12 mr-3" alt="Logo" />
-            </a>
+            </a> -->
 
             <!-- Desktop Search -->
             <div class="relative hidden md:flex items-center flex-grow justify-end">

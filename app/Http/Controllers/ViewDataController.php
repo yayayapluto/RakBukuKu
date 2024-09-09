@@ -43,9 +43,10 @@ class ViewDataController extends Controller
     }
 
     // Search Results Page
-    public function search(Request $request)
+    public function search($query)
     {
-        $query = $request->input('query');
+        $query = trim($query);
+
         $books = Book::where('judul', 'like', "%$query%")
             ->orWhere('pengarang', 'like', "%$query%")
             ->orWhere('penerbit', 'like', "%$query%")

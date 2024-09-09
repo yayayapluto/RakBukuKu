@@ -35,6 +35,7 @@ class BookController extends Controller
     {
         // Validate the request data
         $request->validate([
+            'id' => 'required|integer|digits_between:1,20',
             'buku_id' => 'required|string|max:255',
             'id_kategori' => 'required|exists:categories,id',
             'id_rak' => 'required|exists:racks,id',
@@ -82,6 +83,7 @@ class BookController extends Controller
     {
         // Validate the request data
         $request->validate([
+            'id' => 'required|integer|digits_between:1,20',
             'buku_id' => 'required|string|max:255',
             'id_kategori' => 'required|exists:categories,id',
             'id_rak' => 'required|exists:racks,id',
