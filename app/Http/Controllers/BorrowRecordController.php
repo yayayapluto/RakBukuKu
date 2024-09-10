@@ -46,17 +46,20 @@ class BorrowRecordController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BorrowRecord $borrowRecord)
+    public function show($id)
     {
-        return view('borrow_records.show', compact('borrowRecord'));
+        $data = BorrowRecord::find($id);
+        return view('borrow_records.show', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BorrowRecord $borrowRecord)
+    public function edit($id)
     {
-        return view('borrow_records.edit', compact('borrowRecord'));
+        $data = BorrowRecord::find($id);
+
+        return view('borrow_records.edit', compact('data'));
     }
 
     /**
@@ -84,6 +87,6 @@ class BorrowRecordController extends Controller
     public function destroy(BorrowRecord $borrowRecord)
     {
         $borrowRecord->delete();
-        return redirect()->route('borrow_records.index')->with('success', 'Borrow Record deleted successfully!');
+        return redirect()->route('borrow.index')->with('success', 'Borrow Record deleted successfully!');
     }
 }

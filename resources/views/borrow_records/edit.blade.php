@@ -1,65 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update User Information</title>
+    <title>Update Borrow Information</title>
 </head>
-
 <body>
     <div>
-        <h2>Update User Information</h2>
-        <form action="{{ route('users.update', $data->id) }}" method="POST">
+        <h2>Update Borrow Information</h2>
+        <form action="{{ route('borrow.update', $data->pinjam_id) }}" method="POST">
             @csrf
             @method('PUT')
 
             <div>
-                <label for="nama">Nama:</label>
-                <input type="text" id="nama" name="nama" value="{{ $data->nama }}" required>
+                <label for="id_anggota">ID Anggota:</label>
+                <input type="text" id="id_anggota" name="id_anggota" value="{{ $data->id_anggota }}" required>
             </div>
 
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="{{ $data->email }}">
+                <label for="id_buku">ID Buku:</label>
+                <input type="text" id="id_buku" name="id_buku" value="{{ $data->id_buku }}" required>
             </div>
 
             <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <div>
-                <label for="tempat_lahir">Tempat Lahir:</label>
-                <input type="text" id="tempat_lahir" name="tempat_lahir" value="{{ $data->tempat_lahir }}">
-            </div>
-
-            <div>
-                <label for="tanggal_lahir">Tanggal Lahir:</label>
-                <input type="date" id="tanggal_lahir" name="tanggal_lahir" value="{{ $data->tanggal_lahir }}">
-            </div>
-
-            <div>
-                <label for="jenis_kelamin">Jenis Kelamin:</label>
-                <select id="jenis_kelamin" name="jenis_kelamin">
-                    <option value="pria" {{ $data->jenis_kelamin == 'pria' ? 'selected' : '' }}>Pria</option>
-                    <option value="wanita" {{ $data->jenis_kelamin == 'wanita' ? 'selected' : '' }}>Wanita</option>
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="pending" {{ $data->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="approved" {{ $data->status == 'approved' ? 'selected' : '' }}>Approved</option>
+                    <option value="returned" {{ $data->status == 'returned' ? 'selected' : '' }}>Returned</option>
                 </select>
             </div>
 
             <div>
-                <label for="alamat">Alamat:</label>
-                <textarea id="alamat" name="alamat">{{ $data->alamat }}</textarea>
+                <label for="tgl_pinjam">Tanggal Pinjam:</label>
+                <input type="date" id="tgl_pinjam" name="tgl_pinjam" value="{{ $data->tgl_pinjam }}" required>
             </div>
 
             <div>
-                <label for="telepon">Telepon:</label>
-                <input type="text" id="telepon" name="telepon" maxlength="25" value="{{ $data->telepon }}">
+                <label for="lama_pinjam">Lama Pinjam (days):</label>
+                <input type="number" id="lama_pinjam" name="lama_pinjam" value="{{ $data->lama_pinjam }}" required>
             </div>
 
             <div>
-                <label for="foto">Foto:</label>
-                <textarea id="foto" name="foto">{{ $data->foto }}</textarea>
+                <label for="tgl_balik">Tanggal Balik:</label>
+                <input type="date" id="tgl_balik" name="tgl_balik" value="{{ $data->tgl_balik }}" required>
+            </div>
+
+            <div>
+                <label for="tgl_kembali">Tanggal Kembali:</label>
+                <input type="date" id="tgl_kembali" name="tgl_kembali" value="{{ $data->tgl_kembali }}">
             </div>
 
             <div>
@@ -68,5 +57,4 @@
         </form>
     </div>
 </body>
-
 </html>

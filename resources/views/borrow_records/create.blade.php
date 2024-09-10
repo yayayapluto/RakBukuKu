@@ -1,67 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New User</title>
+    <title>Create New Borrow</title>
 </head>
-
 <body>
     <x-alerts />
 
     <div>
-        <h2>Create New User</h2>
-        <form action="{{ route('users.store') }}" method="POST">
+        <h2>Create New Borrow</h2>
+        <form action="{{ route('borrow.store') }}" method="POST">
             @csrf
             @method('POST')
 
             <div>
-                <label for="nama">Nama:</label>
-                <input type="text" id="nama" name="nama" required>
+                <label for="id_anggota">ID Anggota:</label>
+                <input type="text" id="id_anggota" name="id_anggota" required>
             </div>
 
             <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <label for="id_buku">ID Buku:</label>
+                <input type="text" id="id_buku" name="id_buku" required>
             </div>
 
             <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <div>
-                <label for="tempat_lahir">Tempat Lahir:</label>
-                <input type="text" id="tempat_lahir" name="tempat_lahir">
-            </div>
-
-            <div>
-                <label for="tanggal_lahir">Tanggal Lahir:</label>
-                <input type="date" id="tanggal_lahir" name="tanggal_lahir">
-            </div>
-
-            <div>
-                <label for="jenis_kelamin">Jenis Kelamin:</label>
-                <select id="jenis_kelamin" name="jenis_kelamin">
-                    <option value="pria">Pria</option>
-                    <option value="wanita">Wanita</option>
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="pending">Pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="returned">Returned</option>
                 </select>
             </div>
 
             <div>
-                <label for="alamat">Alamat:</label>
-                <textarea id="alamat" name="alamat"></textarea>
+                <label for="tgl_pinjam">Tanggal Pinjam:</label>
+                <input type="date" id="tgl_pinjam" name="tgl_pinjam" required>
             </div>
 
             <div>
-                <label for="telepon">Telepon:</label>
-                <input type="text" id="telepon" name="telepon" maxlength="25">
+                <label for="lama_pinjam">Lama Pinjam (days):</label>
+                <input type="number" id="lama_pinjam" name="lama_pinjam" required>
             </div>
 
             <div>
-                <label for="foto">Foto:</label>
-                <textarea id="foto" name="foto"></textarea>
+                <label for="tgl_balik">Tanggal Balik:</label>
+                <input type="date" id="tgl_balik" name="tgl_balik" required>
+            </div>
+
+            <div>
+                <label for="tgl_kembali">Tanggal Kembali:</label>
+                <input type="date" id="tgl_kembali" name="tgl_kembali">
             </div>
 
             <div>
@@ -70,5 +59,4 @@
         </form>
     </div>
 </body>
-
 </html>

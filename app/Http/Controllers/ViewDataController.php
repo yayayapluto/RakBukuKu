@@ -39,7 +39,7 @@ class ViewDataController extends Controller
     public function categories()
     {
         $categories = Category::with('books')->get();
-        return view('categories.index', compact('categories'));
+        return view('other.detailKategori', compact('categories'));
     }
 
     // Search Results Page

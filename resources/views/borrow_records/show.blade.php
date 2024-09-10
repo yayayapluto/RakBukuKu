@@ -1,59 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Details</title>
+    <title>Borrow Details</title>
 </head>
-
 <body>
     <div>
-        <h2>User Details</h2>
+        <h2>Borrow Details</h2>
 
         <div>
-            <strong>Nama:</strong>
-            <p>{{ $data->nama }}</p>
+            <strong>ID Anggota:</strong>
+            <p>{{ $data->id_anggota }}</p>
         </div>
 
         <div>
-            <strong>Email:</strong>
-            <p>{{ $data->email }}</p>
+            <strong>ID Buku:</strong>
+            <p>{{ $data->id_buku }}</p>
         </div>
 
         <div>
-            <strong>Level:</strong>
-            <p>{{ ucfirst($data->level) }}</p>
+            <strong>Status:</strong>
+            <p>{{ ucfirst($data->status) }}</p>
         </div>
 
         <div>
-            <strong>Tempat Lahir:</strong>
-            <p>{{ $data->tempat_lahir }}</p>
+            <strong>Tanggal Pinjam:</strong>
+            <p>{{ $data->tgl_pinjam }}</p>
         </div>
 
         <div>
-            <strong>Tanggal Lahir:</strong>
-            <p>{{ $data->tanggal_lahir }}</p>
+            <strong>Lama Pinjam:</strong>
+            <p>{{ $data->lama_pinjam }} days</p>
         </div>
 
         <div>
-            <strong>Jenis Kelamin:</strong>
-            <p>{{ ucfirst($data->jenis_kelamin) }}</p>
+            <strong>Tanggal Balik:</strong>
+            <p>{{ $data->tgl_balik }}</p>
         </div>
 
         <div>
-            <strong>Alamat:</strong>
-            <p>{{ $data->alamat }}</p>
-        </div>
-
-        <div>
-            <strong>Telepon:</strong>
-            <p>{{ $data->telepon }}</p>
-        </div>
-
-        <div>
-            <strong>Tanggal Bergabung:</strong>
-            <p>{{ $data->tanggal_bergabung }}</p>
+            <strong>Tanggal Kembali:</strong>
+            <p>{{ $data->tgl_kembali }}</p>
         </div>
 
         <div>
@@ -62,5 +50,4 @@
         </div>
     </div>
 </body>
-
 </html>
