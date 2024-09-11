@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
+use App\Models\Rack;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -70,10 +72,13 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Book $book)
+    public function edit(Book $book, Category $categories, Rack $racks)
     {
+        // Fetch the categories and racks from the database
+        $categories = Category::all(); // or however you're retrieving them
+        $racks = Rack::all(); // similar here
         // Return a view with the form to edit the specific book
-        return view('books.edit', compact('book'));
+        return view('books.edit', compact('book', 'categories', 'racks'));
     }
 
     /**
