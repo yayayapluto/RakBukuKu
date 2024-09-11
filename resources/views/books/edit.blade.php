@@ -23,7 +23,7 @@
                 <label for="id_kategori">Kategori:</label>
                 <select id="id_kategori" name="id_kategori" required>
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ $book->id_kategori == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                        <option value="{{ $category->id }}" {{ $book->id_kategori == $category->id ? 'selected' : '' }}>{{ $category->nama }}</option>
                     @endforeach
                 </select>
             </div>
@@ -32,7 +32,7 @@
                 <label for="id_rak">Rak:</label>
                 <select id="id_rak" name="id_rak" required>
                     @foreach($racks as $rack)
-                        <option value="{{ $rack->id }}" {{ $book->id_rak == $rack->id ? 'selected' : '' }}>{{ $rack->name }}</option>
+                        <option value="{{ $rack->id }}" {{ $book->id_rak == $rack->id ? 'selected' : '' }}>{{ $rack->nama }}</option>
                     @endforeach
                 </select>
             </div>

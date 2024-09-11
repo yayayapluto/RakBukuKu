@@ -47,10 +47,11 @@
 
             <!-- Account Icon -->
             <div class="flex-shrink-0">
-                <svg class="w-[50px] h-[50px] text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <a href="{{route('dashboard')}}"><svg class="w-[50px] h-[50px] text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill="none" d="M0 0h24v24H0V0z"></path>
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z"></path>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z"></path>
                 </svg>
+                </a>
             </div>
         </div>
     </div>
@@ -134,14 +135,7 @@
         <main class="flex justify-between items-center fixed">
             <h1 class="text-blue mt-8 ml-[350px] font-bold text-xl">Dashboard</h1>
             <h1 class="text-black mt-8 ml-2 font-medium text-sm">Control Panel</h1>
-            <div class="">
-                <button onclick="pindahpage()" class="flex justify-end items-end  ml-96 mt-8">
-                    <div class="flex px-1 py-1 bg-black rounded-md items-center ml-36">
-                        <img src="{{ asset('storage/pluss.svg') }}" alt="hah">
-                        <p class="font-semibold text-[9px] text-white">Tambah User</p>
-                    </div>
-                </button>
-            </div>
+            
         </main>
 
         <!-- Container for the four sections -->

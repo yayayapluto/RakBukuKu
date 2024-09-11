@@ -120,10 +120,19 @@
             <h2 class="font-semibold pl-4">Daftar Data User</h2>
         </div>
 
-        <hr class="mb-8 bg-blue border border-blue text-blue ml-8">
+        <hr class="mb-4 bg-blue border border-blue text-blue ml-8">
+
+        <div class="">
+                <button onclick="pindahpage1()" class="flex justify-start items-start  ml-1 mt-4 mb-10">
+                    <div class="flex px-1 py-1 bg-blue rounded-md items-center ml-6">
+                        <img src="{{ asset('storage/pluss.svg') }}" alt="hah">
+                        <p class="font-semibold text-[9px] text-white">Tambah User</p>
+                    </div>
+                </button>
+            </div>
 
                 
-        <table border="" cellspacing="0" cellpadding="8" class="table-auto w-1/12 max-w-6xl mx-auto text-xs mb-5 rounded-lg overflow-hidden">
+        <table border="" cellspacing="0" cellpadding="8" class="table-auto w-1/12 max-w-6xl mx-auto text-[10px] mb-5 rounded-lg overflow-hidden">
         <thead class="bg-white">
             <tr>
                 <th class="px-4 py-2">ID</th>

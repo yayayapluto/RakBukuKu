@@ -115,16 +115,27 @@
     <div>
 
 
-        <div class="flex justify-start items-center mb-2 mt-4 ml-6">
+       <div class="flex justify-start items-center mb-2 mt-4 ml-6">
             <img src="{{asset('storage/daftarData.svg')}}" alt="" class="pl-2">
-            <h2 class="font-semibold pl-4">Data Buku </h2>
+            <h2 class="font-semibold pl-4">Data Buku</h2>
         </div>
 
-        <hr class="mb-8 bg-blue border border-blue text-blue ml-8">
+        <hr class="mb-4 bg-blue border border-blue text-blue ml-8">
+
+
+        <div class="">
+            <button onclick="pindahpage1()" class="flex justify-start items-start ml-1 mt-4 mb-10">
+                <div class="flex px-1 py-1 bg-blue rounded-md items-center ml-6">
+                    <img src="{{ asset('storage/pluss.svg') }}" alt="hah">
+                    <p class="font-semibold text-[9px] text-white">Tambah Buku</p>
+                </div>
+            </button>
+        </div>
+
 
                 
-        <table border="" cellspacing="0" cellpadding="8" class="table-auto w-1/12 max-w-6xl mx-auto text-xs mb-5 rounded-lg overflow-hidden">
-        <thead class="bg-white">
+        <table border="" cellspacing="0" cellpadding="8" class="table-auto w-1/12 max-w-6xl mx-auto text-[11px] mb-5 rounded-lg overflow-hidden">
+        <thead class="bg-white py-2">
             <tr>
                 <th class="px-1 py-1">ID</th>
                 <th class="px-1 py-1">ID Buku</th>
@@ -138,7 +149,7 @@
                 <th class="px-1 py-1">Isi</th>
                 <th class="px-1 py-1">Stok</th>
                 <th class="px-1 py-1">Tanggal Dibuat</th>
-                <th class="px-1 py-1">Action</th>
+                <th class="px-4 py-4">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -149,14 +160,14 @@
                     <td class="">{{$buku->id_kategori}} </td>
                     <td class="">{{$buku->id_rak}} </td>
                     <td class="">{{$buku->isbn}} </td>
-                    <td class="">{{$buku->lampiran}} </td>
+                    <td class="">{{Str::limit($buku->lampiran, 10)}} </td>
                     <td class="">{{$buku->penerbit}} </td>
                     <td class="">{{$buku->pengarang}} </td>
                     <td class="">{{$buku->thn_terbit}} </td>
-                    <td class="">{{$buku->isi}} </td>
+                    <td class="">{{Str::limit($buku->isi, 20) }} </td>
                     <td class="">{{$buku->stok}} </td>
                     <td class="">{{$buku->tgl_masuk}} </td>
-                    <td class="">
+                    <td class="flex">
                         <a href="{{ route('books.show', $buku->id) }}" class="text-blue-500 hover:underline pr-1">view</a><br>
                         <a href="{{ route('books.edit', $buku->id) }}" class=""><div class="bg-edit rounded-md items-center px-2"><img class=" text-white items-center   w-5 " src="{{asset('Storage/edit.svg')}}"></div></a><br>
                         <form action="{{ route('books.index', $buku->id) }}" method="POST" class="inline">
@@ -240,6 +251,10 @@
 
     function pindahpage() {
         window.location.href = 'users/create'
+    }
+
+    function pindahpage1() {
+        window.location.href = 'books/create'
     }
 
 
