@@ -123,7 +123,7 @@
         <hr class="mb-4 bg-blue border border-blue text-blue ml-8">
 
         <div class="">
-                <button onclick="pindahpage1()" class="flex justify-start items-start  ml-1 mt-4 mb-10">
+                <button onclick="pindahpage()" class="flex justify-start items-start  ml-1 mt-4 mb-10">
                     <div class="flex px-1 py-1 bg-blue rounded-md items-center ml-6">
                         <img src="{{ asset('storage/pluss.svg') }}" alt="hah">
                         <p class="font-semibold text-[9px] text-white">Tambah User</p>

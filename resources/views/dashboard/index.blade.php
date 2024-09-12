@@ -99,11 +99,11 @@
                     </a>
                     <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-12">
                         <img src="{{ asset('storage/KategoriBuku.svg') }}" alt="">
-                        <p class="pt-0 pl-4 text-semibold">Kategori Buku</p>
+                        <a href="{{route('borrow.index')}}"><p class="pt-0 pl-4 text-semibold">Kategori Buku</p></a>
                     </div>
                     <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-12">
                         <img src="{{ asset('storage/RakBuku.svg') }}" alt="">
-                        <p class="pt-0 pl-4 text-semibold">Rak</p>
+                        <a href="{{route('racks.index')}}"><p class="pt-0 pl-4 text-semibold">Rak</p></a>
                     </div>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">

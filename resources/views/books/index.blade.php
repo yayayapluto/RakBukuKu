@@ -170,7 +170,7 @@
                     <td class="flex">
                         <a href="{{ route('books.show', $buku->id) }}" class="text-blue-500 hover:underline pr-1">view</a><br>
                         <a href="{{ route('books.edit', $buku->id) }}" class=""><div class="bg-edit rounded-md items-center px-2"><img class=" text-white items-center   w-5 " src="{{asset('Storage/edit.svg')}}"></div></a><br>
-                        <form action="{{ route('books.index', $buku->id) }}" method="POST" class="inline">
+                        <form action="{{ route('books.destroy', $buku->id) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:underline">Delete</button>
