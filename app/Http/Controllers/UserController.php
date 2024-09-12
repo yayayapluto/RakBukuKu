@@ -78,18 +78,18 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(User $user)
     {
-        $data = User::find($id);
+        $data = $user;
         return view('users.show', compact('data'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $data = User::find($id)->first();
+        $data = $user;
         return view('users.edit', compact('data'));
     }
 
@@ -98,10 +98,10 @@ class UserController extends Controller
      */
     public function update(Request $request, int $id)
     {
+
         $data = $request->validate([
             'nama' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:users,email|max:255',
-            'password' => 'required|string|min:8|max:255',
+            'email' => 'nullable|email|max:255',
             'tempat_lahir' => 'nullable|string|max:255',
             'tanggal_lahir' => 'nullable|date',
             'jenis_kelamin' => 'nullable|in:pria,wanita',
@@ -110,15 +110,7 @@ class UserController extends Controller
             'foto' => 'nullable|string',
         ]);
 
-        $data['password'] = Hash::make($data['password']);
-
-        if (!User::find($id)) {
-            return redirect()->back()->withErrors("Cannot find user with id: {{$id}}");
-        }
-
-        if (!User::create($data)) {
-            return redirect()->back()->withErrors('Failed to updating user data, please try again');
-        }
+        User::where('id', $id)->update($data);
 
         return redirect()->route('users.index')->with('success', 'Update user data success');
     }
@@ -128,6 +120,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'Delete user data success');
+
     }
 }

@@ -24,8 +24,7 @@ class RackController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
         ]);
 
         Rack::create($request->all());
@@ -46,14 +45,13 @@ class RackController extends Controller
     }
 
     // Update the specified rack in the database
-    public function update(Request $request, Rack $rack)
+    public function update(Request $request, int $id)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+        $data = $request->validate([
+            'nama' => 'required|string|max:255',
         ]);
 
-        $rack->update($request->all());
+        Rack::where('id', $id)->update($data);
 
         return redirect()->route('racks.index')->with('success', 'Rack updated successfully.');
     }

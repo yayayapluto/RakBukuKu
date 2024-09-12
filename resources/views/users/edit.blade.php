@@ -13,7 +13,6 @@
         <form action="{{ route('users.update', $data->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
             <div>
                 <label for="nama">Nama:</label>
                 <input type="text" id="nama" name="nama" value="{{ $data->nama }}" required>
@@ -22,11 +21,6 @@
             <div>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="{{ $data->email }}">
-            </div>
-
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
             </div>
 
             <div>

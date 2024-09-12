@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users Index</title>
     @vite('resources/css/app.css')
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous">
     </script>
 </head >
@@ -20,7 +20,7 @@
             <div class="flex-shrink-0">
                 <img src="{{ asset('storage/logoo.svg') }}" alt="Banner Image" class="w-[50px] h-[50px] object-cover">
             </div>
-            
+
             <!-- Search Input -->
             <div class="flex-grow flex justify-center mx-4 relative">
                 <div class="w-full max-w-[500px] h-[40px] bg-NavColor rounded-full border border-gray-300 flex items-center pl-4 pr-4">
@@ -58,15 +58,15 @@
             <div class="ml-4 mt-5 w-[250px] h-[220px] bg-DashboarAdmin rounded-xl" id="halamanSamping">
                 <!-- Menu Items -->
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/dashboard.svg') }}" alt="" class="w-[25px]"> 
+                    <img src="{{ asset('storage/dashboard.svg') }}" alt="" class="w-[25px]">
                     <p class="pt-1 pl-3 text-semibold">Dasboard</p>
                 </div>
                 <div class="flex justify-start items-start pt-3 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/Data_pengguna.svg') }}" alt="" class="w-[25px]"> 
+                    <img src="{{ asset('storage/Data_pengguna.svg') }}" alt="" class="w-[25px]">
                     <a class="pt-1 pl-3 text-semibold" href="">Data Pengguna</a>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/data.svg') }}" alt="" class="w-[20px]"> 
+                    <img src="{{ asset('storage/data.svg') }}" alt="" class="w-[20px]">
                     <p class="pt-1 pl-4 text-semibold">Data</p>
                     <div class="pl-32 pt-1">
                         <img src="{{ asset('storage/dropdwond.svg') }}" alt="" id="dropdown" class="w-[15px] cursor-pointer">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/transaksi.svg') }}" alt="" class="w-[20px]"> 
+                    <img src="{{ asset('storage/transaksi.svg') }}" alt="" class="w-[20px]">
                     <p class="pt-1 pl-4 text-semibold">Transaksi</p>
                     <div class="pl-[92px] pt-1">
                         <img src="{{ asset('storage/dropdwond.svg') }}" alt="" id="dropdown2" class="w-[15px] cursor-pointer">
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/denda.svg') }}" alt="" class="w-[20px]"> 
+                    <img src="{{ asset('storage/denda.svg') }}" alt="" class="w-[20px]">
                     <p class="pt-[2px] pl-4 text-semibold">Denda</p>
                 </div>
             </div>
@@ -122,7 +122,7 @@
 
         <hr class="mb-8 bg-blue border border-blue text-blue ml-8">
 
-                
+
         <table border="" cellspacing="0" cellpadding="8" class="table-auto w-1/12 max-w-6xl mx-auto text-xs mb-5 rounded-lg overflow-hidden">
         <thead class="bg-white">
             <tr>
@@ -159,7 +159,7 @@
                     <td class="">
                         <a href="{{ route('books.show', $buku->id) }}" class="text-blue-500 hover:underline pr-1">view</a><br>
                         <a href="{{ route('books.edit', $buku->id) }}" class=""><div class="bg-edit rounded-md items-center px-2"><img class=" text-white items-center   w-5 " src="{{asset('Storage/edit.svg')}}"></div></a><br>
-                        <form action="{{ route('books.index', $buku->id) }}" method="POST" class="inline">
+                        <form action="{{ route('books.destroy', $buku->id) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500 hover:underline">Delete</button>

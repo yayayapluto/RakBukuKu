@@ -14,13 +14,8 @@
             @csrf
 
             <div>
-                <label for="name">Nama Rak:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-
-            <div>
-                <label for="location">Lokasi Rak:</label>
-                <input type="text" id="location" name="location" required>
+                <label for="nama">Nama Rak:</label>
+                <input type="text" id="nama" name="nama" required>
             </div>
 
             <div>

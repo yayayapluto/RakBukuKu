@@ -8,6 +8,13 @@
 </head>
 
 <body>
+    @forelse ($errors->all() as $e)
+        <li>{{$e}}</li>
+    @empty
+        
+    @endforelse
+
+
     <div>
         <h2>Update Informasi Buku</h2>
         <form action="{{ route('books.update', $book->id) }}" method="POST">

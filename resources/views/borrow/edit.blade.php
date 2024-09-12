@@ -8,7 +8,7 @@
 <body>
     <div>
         <h2>Update Borrow Information</h2>
-        <form action="{{ route('borrow.update', $data->pinjam_id) }}" method="POST">
+        <form action="{{ route('borrow.update', $data->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -25,9 +25,8 @@
             <div>
                 <label for="status">Status:</label>
                 <select id="status" name="status">
-                    <option value="pending" {{ $data->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                    <option value="approved" {{ $data->status == 'approved' ? 'selected' : '' }}>Approved</option>
-                    <option value="returned" {{ $data->status == 'returned' ? 'selected' : '' }}>Returned</option>
+                    <option value="dipinjam" {{ $data->status == 'dipinjam' ? 'selected' : '' }}>dipinjam</option>
+                    <option value="dikembalikan" {{ $data->status == 'dikembalikan' ? 'selected' : '' }}>dikembalikan</option>
                 </select>
             </div>
 

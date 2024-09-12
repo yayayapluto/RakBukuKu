@@ -7,6 +7,7 @@ use App\Models\BorrowRecord;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ViewDataController extends Controller
 {
@@ -63,11 +64,31 @@ class ViewDataController extends Controller
         $borrowedBooksCount = BorrowRecord::where('status', 'dipinjam')->count();
         $returnedBooksCount = BorrowRecord::where('status', 'dikembalikan')->count();
 
+        if (Auth::user()->level != "admin") {
+            return redirect()->route("landing");
+        }
+
         return view('dashboard.index', [
             'userCount' => $userCount,
             'bookCount' => $bookCount,
             'borrowedBooksCount' => $borrowedBooksCount,
             'returnedBooksCount' => $returnedBooksCount
+        ]);
+    }
+
+    public function profil(){
+        $dataPeminjaman = BorrowRecord::where('id_anggota', "=", Auth::user()->id)->where("status", "=", "dipinjam")->get();
+        $dataPengembalian = BorrowRecord::where('id_anggota', "=", Auth::user()->id)->where("status", "=", "dikembalikan")->get();
+        $dataAnggota = User::where("id", "=", Auth::user()->id)->get();
+
+        if (Auth::user()->level != "anggota") {
+            return redirect()->route("landing");
+        }
+
+        return view("profil.index", [
+            "dataPeminjaman" => $dataPeminjaman,
+            "dataPengembalian" => $dataPengembalian,
+            "dataAnggota" => $dataAnggota
         ]);
     }
 }

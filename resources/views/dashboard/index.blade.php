@@ -15,8 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     @vite('resources/css/app.css')
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous">
     </script>
     <style>
@@ -34,7 +34,7 @@
             <div class="flex-shrink-0">
                 <img src="{{ asset('storage/logoo.svg') }}" alt="Banner Image" class="w-[50px] h-[50px] object-cover">
             </div>
-            
+
             <!-- Search Input -->
             <div class="flex-grow flex justify-center mx-4 relative">
                 <div class="w-full max-w-[500px] h-[40px] bg-NavColor rounded-full border border-gray-300 flex items-center pl-4 pr-4">
@@ -65,7 +65,7 @@
                     <img src="{{ asset('storage/avatar.jpg') }}" alt="" class="w-[60px] rounded-xl">
                 </div>
                 <div class="ml-2 pt-2">
-                    <p class="text-blue font-bold text-sm pb-1">Rayland Endri Kurniawan</p>
+                    <p class="text-blue font-bold text-sm pb-1">{{Auth::user()->nama}}</p>
                     <p class="text-black font-medium text-xs pb-1">Admin</p>
                     <p class="text-blue font-semibold text-xs pb-1">onnline</p>
                 </div>
@@ -74,15 +74,15 @@
             <div class="ml-4 mt-5 w-[250px] h-[220px] bg-DashboarAdmin rounded-xl" id="halamanSamping">
                 <!-- Menu Items -->
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/dashboard.svg') }}" alt="" class="w-[25px]"> 
+                    <img src="{{ asset('storage/dashboard.svg') }}" alt="" class="w-[25px]">
                     <p class="pt-1 pl-3 text-semibold">Dasboard</p>
                 </div>
                 <div class="flex justify-start items-start pt-3 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/Data_pengguna.svg') }}" alt="" class="w-[25px]"> 
+                    <img src="{{ asset('storage/Data_pengguna.svg') }}" alt="" class="w-[25px]">
                     <a class="pt-1 pl-3 text-semibold" href="">Data Pengguna</a>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/data.svg') }}" alt="" class="w-[20px]"> 
+                    <img src="{{ asset('storage/data.svg') }}" alt="" class="w-[20px]">
                     <p class="pt-1 pl-4 text-semibold">Data</p>
                     <div class="pl-32 pt-1">
                         <img src="{{ asset('storage/dropdwond.svg') }}" alt="" id="dropdown" class="w-[15px] cursor-pointer">
@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/transaksi.svg') }}" alt="" class="w-[20px]"> 
+                    <img src="{{ asset('storage/transaksi.svg') }}" alt="" class="w-[20px]">
                     <p class="pt-1 pl-4 text-semibold">Transaksi</p>
                     <div class="pl-[92px] pt-1">
                         <img src="{{ asset('storage/dropdwond.svg') }}" alt="" id="dropdown2" class="w-[15px] cursor-pointer">
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
-                    <img src="{{ asset('storage/denda.svg') }}" alt="" class="w-[20px]"> 
+                    <img src="{{ asset('storage/denda.svg') }}" alt="" class="w-[20px]">
                     <p class="pt-[2px] pl-4 text-semibold">Denda</p>
                 </div>
             </div>
@@ -168,7 +168,7 @@
             <section id="2">
                 <a href="{{ route('books.index') }}">
                 <div class="flex w-[200px] h-[90px] bg-IsiDashboard2 rounded-lg relative">
-                    
+
                     <div class="grid grid-rows-2 flex-grow">
                         <p class="font-bold text-2xl text-white px-3 pt-2">{{$bookCount}}</p>
                         <p class="font-medium text-xs text-white px-3 pb-2">Jenis Buku</p>
@@ -179,7 +179,7 @@
                     <div class="bg-SecondColor h-[15px] w-[200px] mt-[75px] absolute rounded-br-lg rounded-bl-lg">
                         <p class="font-medium text-IsiDashboard2 text-xs items-center justify-center flex">More Info</p>
                     </div>
-                    
+
                 </div>
                 </a>
             </section>
@@ -223,7 +223,7 @@
 </html>
 
 
-    
+
 
 
 <script>
