@@ -13,12 +13,8 @@
 
         <div>
             <strong>Nama Rak:</strong>
-            <p>{{ $rack->name }}</p>
+            <p>{{ $rack->nama }}</p>
         </div>
-
-        <div>
-            <strong>Lokasi Rak:</strong>
-            <p>{{ $rack->location }}</p>
         </div>
     </div>
 </body>

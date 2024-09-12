@@ -24,10 +24,12 @@ class BookController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Category $categories, Rack $racks)
     {
+        $categories = Category::all();
+        $racks = Rack::all();
         // Return a view with the form to create a new book
-        return view('books.create');
+        return view('books.create', compact('categories', 'racks'));
     }
 
     /**
@@ -37,7 +39,6 @@ class BookController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'id' => 'required|integer|digits_between:1,20',
             'buku_id' => 'required|string|max:255',
             'id_kategori' => 'required|exists:categories,id',
             'id_rak' => 'required|exists:racks,id',
@@ -74,24 +75,21 @@ class BookController extends Controller
      */
     public function edit(Book $book, Category $categories, Rack $racks)
     {
-        // Fetch the categories and racks from the database
-        $categories = Category::all(); // or however you're retrieving them
-        $racks = Rack::all(); // similar here
-        // Return a view with the form to edit the specific book
+        $categories = Category::all();
+        $racks = Rack::all();
         return view('books.edit', compact('book', 'categories', 'racks'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, int $id)
     {
         // Validate the request data
-        $request->validate([
-            'id' => 'required|integer|digits_between:1,20',
+        $data = $request->validate([
             'buku_id' => 'required|string|max:255',
-            'id_kategori' => 'required|exists:categories,id',
-            'id_rak' => 'required|exists:racks,id',
+            'id_kategori' => 'required',
+            'id_rak' => 'required',
             'sampul' => 'nullable|string|max:255',
             'isbn' => 'nullable|string|max:255',
             'lampiran' => 'nullable|string|max:255',
@@ -105,7 +103,7 @@ class BookController extends Controller
         ]);
 
         // Update the book record
-        $book->update($request->all());
+        Book::where('id', $id)->update($data);
 
         // Redirect with a success message
         return redirect()->route('books.index')->with('success', 'Book updated successfully.');

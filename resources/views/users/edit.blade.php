@@ -27,6 +27,7 @@
 
     </style>
 </head>
+<<<<<<< HEAD
 <body class="font-poppins">
     <!-- Main container for the dashboard -->
     <div class="w-full bg-white shadow-lg">
@@ -44,6 +45,18 @@
                     </svg>
                     <input type="text" placeholder="Search..." class="bg-transparent flex-grow h-full border-none focus:ring-0 focus:outline-none">
                 </div>
+=======
+
+<body>
+    <div>
+        <h2>Update User Information</h2>
+        <form action="{{ route('users.update', $data->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div>
+                <label for="nama">Nama:</label>
+                <input type="text" id="nama" name="nama" value="{{ $data->nama }}" required>
+>>>>>>> 26dc6c12d1c2909e749a6b19d8cf22842102f27b
             </div>
 
             <!-- Account Icon -->
@@ -57,6 +70,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
 
     <!-- sidebar -->
     <div class="flex">
@@ -71,6 +85,11 @@
                     <p class="text-black font-medium text-xs pb-1">Admin</p>
                     <p class="text-blue font-semibold text-xs pb-1">onnline</p>
                 </div>
+=======
+            <div>
+                <label for="tempat_lahir">Tempat Lahir:</label>
+                <input type="text" id="tempat_lahir" name="tempat_lahir" value="{{ $data->tempat_lahir }}">
+>>>>>>> 26dc6c12d1c2909e749a6b19d8cf22842102f27b
             </div>
             <!-- Sidebar Menu -->
             <div class="ml-4 mt-5 w-[250px] h-[220px] bg-DashboarAdmin rounded-xl" id="halamanSamping">

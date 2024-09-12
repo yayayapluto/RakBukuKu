@@ -38,7 +38,7 @@
                         <td>
                             <a href="{{ route('borrow.show', $item->id) }}">View</a>
                             <a href="{{ route('borrow.edit', $item->id) }}">Edit</a>
-                            <form action="{{ route('borrow.destroy', $item) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('borrow.destroy', $item->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Delete</button>

@@ -15,15 +15,9 @@
             @method('PUT')
 
             <div>
-                <label for="name">Nama Rak:</label>
-                <input type="text" id="name" name="name" value="{{ $rack->name }}" required>
+                <label for="nama">Nama Rak:</label>
+                <input type="text" id="nama" name="nama" value="{{ $rack->nama }}" required>
             </div>
-
-            <div>
-                <label for="location">Lokasi Rak:</label>
-                <input type="text" id="location" name="location" value="{{ $rack->location }}" required>
-            </div>
-
             <div>
                 <button type="submit">Update</button>
             </div>

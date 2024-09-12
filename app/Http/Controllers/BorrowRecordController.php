@@ -13,7 +13,7 @@ class BorrowRecordController extends Controller
     public function index()
     {
         $data = BorrowRecord::all();
-        return view('borrow_records.index', compact('data'));
+        return view('borrow.index', compact('data'));
     }
 
     /**
@@ -21,7 +21,7 @@ class BorrowRecordController extends Controller
      */
     public function create()
     {
-        return view('borrow_records.create');
+        return view('borrow.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class BorrowRecordController extends Controller
         ]);
 
         $borrowRecord = BorrowRecord::create($validatedData);
-        return redirect()->route('borrow_records.index')->with('success', 'Borrow Record created successfully!');
+        return redirect()->route('borrow.index')->with('success', 'Borrow Record created successfully!');
     }
 
     /**
@@ -49,7 +49,7 @@ class BorrowRecordController extends Controller
     public function show($id)
     {
         $data = BorrowRecord::find($id);
-        return view('borrow_records.show', compact('data'));
+        return view('borrow.show', compact('data'));
     }
 
     /**
@@ -59,13 +59,13 @@ class BorrowRecordController extends Controller
     {
         $data = BorrowRecord::find($id);
 
-        return view('borrow_records.edit', compact('data'));
+        return view('borrow.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BorrowRecord $borrowRecord)
+    public function update(Request $request, int $id)
     {
         $validatedData = $request->validate([
             'id_anggota' => 'sometimes|required|exists:users,id',
@@ -77,16 +77,17 @@ class BorrowRecordController extends Controller
             'tgl_kembali' => 'nullable|date',
         ]);
 
-        $borrowRecord->update($validatedData);
-        return redirect()->route('borrow_records.index')->with('success', 'Borrow Record updated successfully!');
+        BorrowRecord::where('id', $id)->update($validatedData);
+
+        return redirect()->route('borrow.index')->with('success', 'Borrow Record updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BorrowRecord $borrowRecord)
+    public function destroy(int $id)
     {
-        $borrowRecord->delete();
+        BorrowRecord::where('id', $id)->delete();
         return redirect()->route('borrow.index')->with('success', 'Borrow Record deleted successfully!');
     }
 }
