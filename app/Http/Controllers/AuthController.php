@@ -24,30 +24,41 @@ class AuthController extends Controller
             return redirect()->route(route: 'landing');
         } else {
             return redirect()->route(route: 'dashboard');
-        }
+        } 
     }
 
-    public function do_register(Request $req){
-        $data = $req->validate([
-            'nama' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:users,email|max:255',
-            'email_verified_at' => 'nullable|date',
-            'password' => 'required|string|min:4|max:255',
-            'tempat_lahir' => 'nullable|string|max:255',
-            'tanggal_lahir' => 'nullable|date',
-            'jenis_kelamin' => 'nullable|in:pria,wanita',
-            'alamat' => 'nullable|string',
-            'telepon' => 'nullable|string|max:25',
-            'tanggal_bergabung' => 'nullable|date',
-            'foto' => 'nullable|string',
-        ]);
+    public function do_register(Request $req) {
+    $data = $req->validate([
+        'nama' => 'required|string|max:255',
+        'email' => 'nullable|email|unique:users,email|max:255',
+        'password' => 'required|string|min:4|max:255',
+        'tempat_lahir' => 'nullable|string|max:255',
+        'tanggal_lahir' => 'nullable|date',
+        'jenis_kelamin' => 'nullable|in:pria,wanita',
+        'alamat' => 'nullable|string',
+        'telepon' => 'nullable|string|max:25',
+        'foto' => 'nullable|file|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $data['password'] = Hash::make($data['password']);
+    $data['password'] = Hash::make($data['password']);
 
-        User::create($data);
-
-        return redirect()->route('login')->with('success', 'Register success, please login with registered data');
+    if ($req->hasFile('foto')) {
+        $fotoPath = $req->file('foto')->store('uploads', 'public');
+        $data['foto'] = $fotoPath;
     }
+
+    $data['level'] = 'petugas';
+
+    // Tambahkan tanggal bergabung
+    $data['tanggal_bergabung'] = now();
+
+    User::create($data);
+
+    return redirect()->route('login')->with('success', 'Register success, please login with registered data');
+
+    
+}
+
 
     public function do_logout() {
         Auth::logout();
@@ -62,3 +73,5 @@ class AuthController extends Controller
         return view('auth.register');
     }
 }
+
+
