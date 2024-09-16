@@ -50,7 +50,7 @@
                     <img src="{{ asset('storage/avatar.jpg') }}" alt="" class="w-[60px] rounded-xl">
                 </div>
                 <div class="ml-2 pt-2">
-                    <p class="text-blue font-bold text-sm pb-1">Rayland Endri Kurniawan</p>
+                    <p class="text-blue font-bold text-sm pb-1">{{Auth::user()->nama}}</p>
                     <p class="text-black font-medium text-xs pb-1">Admin</p>
                     <p class="text-blue font-semibold text-xs pb-1">onnline</p>
                 </div>

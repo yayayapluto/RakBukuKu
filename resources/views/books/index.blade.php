@@ -49,7 +49,7 @@
                     <img src="{{ asset('storage/avatar.jpg') }}" alt="" class="w-[60px] rounded-xl">
                 </div>
                 <div class="ml-2 pt-2">
-                    <p class="text-blue font-bold text-sm pb-1">Rayland Endri Kurniawan</p>
+                    <p class="text-blue font-bold text-sm pb-1">{{Auth::user()->nama}}</p>
                     <p class="text-black font-medium text-xs pb-1">Admin</p>
                     <p class="text-blue font-semibold text-xs pb-1">onnline</p>
                 </div>
@@ -173,7 +173,7 @@
                         <form action="{{ route('books.destroy', $buku->id) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                            <button type="submit" class="text-red-500 hover:underline" onclick="hapus()">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -255,6 +255,22 @@
 
     function pindahpage1() {
         window.location.href = 'books/create'
+    }
+
+    function hapus() {
+        Swal.fire({
+            title: 'Yakin ingin menghapus?',
+            text: "Data tidak bisa dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm').submit();
+            }
+        });
     }
 
 

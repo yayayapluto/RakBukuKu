@@ -22,7 +22,8 @@ export default {
         register: '#F2F2F2',
         textInput: '#5B5858',
         home: '#CECECE',
-        edit: '#0C8D28'
+        edit: '#0C8D28',
+        merah: '#8C120F',
       },
       rotate: {
         '27': '270deg',

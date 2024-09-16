@@ -49,7 +49,7 @@
                     <img src="{{ asset('storage/avatar.jpg') }}" alt="" class="w-[60px] rounded-xl">
                 </div>
                 <div class="ml-2 pt-2">
-                    <p class="text-blue font-bold text-sm pb-1">Rayland Endri Kurniawan</p>
+                    <p class="text-blue font-bold text-sm pb-1">{{Auth::user()->nama}}</p>
                     <p class="text-black font-medium text-xs pb-1">Admin</p>
                     <p class="text-blue font-semibold text-xs pb-1">onnline</p>
                 </div>
@@ -162,7 +162,7 @@
                     <td class="">{{ $item->tanggal_bergabung }}</td>
                     <td class=""><img src="{{ asset('storage/foto_profil/'. $item->foto) }}" alt="" width="50"></td>
                     <td class="flex">
-                        <a href="{{ route('users.show', $item->id) }}" class="text-blue-500 hover:underline pr-1">view</a><br>
+                        <a href="{{ route('users.show', $item->id) }}" class="text-blue-500 hover:underline pr-1">Cetak Kartu</a><br>
                         <a href="{{ route('users.edit', $item->id) }}" class=""><img class=" px-1 py-2 text-white" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABrUlEQVR4nO3ZPU7DMBjG8T+fC0XiAjCgFgqsHIKVAbEBd+AA7QQj4iRsTAikQs4AC1P56MSAWKlRpTdSFLnBTeKPSH4kS1USN/7Vb105hZiYMlkEesAz8A08AQc0LEvADaBy7bdpmDMNIm0JDchc5vXVFMgPgWcFuAOOM8cuNZAXAk4LeJSBvgLLBTNzTgMQQ6CtuSbFTBaABQJHvGkQ2Zk5ldVMm6RgdbDV+oaItpTZocknEgqio0EM5fx9bjUrhLhenR7kvp/ATu58R3BKfs1XTd7UNcQKwjXEGsIlxCrCFcQ6wgUkixjZQtiG5BG7hoh+SJAqCBUKpCyi0njqhlRBBAP5D7Fl8MVWviEmiHeD1Un5hNSF8AqpE+ENUjfCC8QGwjlksskZSL8PoJs735XjSjZPLcvjKd1xU/qMgf0aEc4hR5l+SaZstkuWkzfIRW4fnsjMVEU4h9xqHiqMK5STN8hoyhOSqginkA25/ktK6Bo4AfaA+TID8AVZA9bL3MjSeLw8RTGJihDijFiJiqVFLC0rUbG0iKUVZmmpwNrMSf/HC6kNZmfEEET+AIuwuiH/1a/LAAAAAElFTkSuQmCC"></a><br>
                         <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="inline">
                             @csrf

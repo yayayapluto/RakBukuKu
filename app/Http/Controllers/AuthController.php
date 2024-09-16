@@ -47,7 +47,7 @@ class AuthController extends Controller
         $data['foto'] = $fotoPath;
     }
 
-    $data['level'] = 'petugas';
+    $data['level'] = 'anggota';
 
     // Tambahkan tanggal bergabung
     $data['tanggal_bergabung'] = now();

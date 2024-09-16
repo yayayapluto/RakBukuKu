@@ -26,7 +26,6 @@
 
     </style>
 </head>
-<<<<<<< HEAD
 <body class="font-poppins">
     <!-- Main container for the dashboard -->
     <div class="w-full bg-white shadow-lg">
@@ -44,26 +43,6 @@
                     </svg>
                     <input type="text" placeholder="Search..." class="bg-transparent flex-grow h-full border-none focus:ring-0 focus:outline-none">
                 </div>
-=======
-
-<body>
-    @forelse ($errors->all() as $e)
-        <li>{{$e}}</li>
-    @empty
-        
-    @endforelse
-
-
-    <div>
-        <h2>Update Informasi Buku</h2>
-        <form action="{{ route('books.update', $book->id) }}" method="POST">
-            @csrf
-            @method('PUT')
-
-            <div>
-                <label for="buku_id">ID Buku:</label>
-                <input type="text" id="buku_id" name="buku_id" value="{{ $book->buku_id }}" required>
->>>>>>> 26dc6c12d1c2909e749a6b19d8cf22842102f27b
             </div>
 
             <!-- Account Icon -->
@@ -87,7 +66,7 @@
                     <img src="{{ asset('storage/avatar.jpg') }}" alt="" class="w-[60px] rounded-xl">
                 </div>
                 <div class="ml-2 pt-2">
-                    <p class="text-blue font-bold text-sm pb-1">Rayland Endri Kurniawan</p>
+                    <p class="text-blue font-bold text-sm pb-1">{{Auth::user()->nama}}</p>
                     <p class="text-black font-medium text-xs pb-1">Admin</p>
                     <p class="text-blue font-semibold text-xs pb-1">onnline</p>
                 </div>
