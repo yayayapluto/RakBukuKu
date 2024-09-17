@@ -170,10 +170,10 @@
                     <td class="flex">
                         <a href="{{ route('books.show', $buku->id) }}" class="text-blue-500 hover:underline pr-1">view</a><br>
                         <a href="{{ route('books.edit', $buku->id) }}" class=""><div class="bg-edit rounded-md items-center px-2"><img class=" text-white items-center   w-5 " src="{{asset('Storage/edit.svg')}}"></div></a><br>
-                        <form action="{{ route('books.destroy', $buku->id) }}" method="POST" class="inline">
+                        <form action="{{ route('books.destroy', $buku->id) }}" method="POST" class="inline delete-form">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline" onclick="hapus()">Delete</button>
+                            <button type="submit" class="text-red-500 hover:underline " onclick="hapus()">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -181,11 +181,27 @@
         </tbody>
     </table>
 
-
+    <style>
+    .swal2-confirm.btn-success {
+        background-color: #28a745 !important;
+        color: white !important;
+        padding: 7px;
+        margin-left: 5px;
+        border-radius: 5px;
+    }
+    .swal2-cancel.btn-danger {
+        background-color: #dc3545 !important;
+        color: white !important;
+        padding: 7px;
+        margin-left: 5px;
+        border-radius: 5px;
+    }
+    </style>
 
     </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
     $(document).ready(function() {
     let currentOpenDropdown = null;
@@ -257,21 +273,60 @@
         window.location.href = 'books/create'
     }
 
-    function hapus() {
-        Swal.fire({
-            title: 'Yakin ingin menghapus?',
-            text: "Data tidak bisa dikembalikan!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('deleteForm').submit();
-            }
+    const deleteForms = document.querySelectorAll('.delete-form');
+    deleteForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Apakah kamu yakin?",
+                text: "kamu tidak akan bisa melihat akun ini lagi",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+                reverseButtons: true,
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Terhapus!",
+                        text: "Your file has been deleted.",
+                        icon: "success",
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    }).then(() => {
+                        form.submit(); // Actually submit the form after the animation
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: "file kamu aman :)",
+                        icon: "error",
+                        showClass: {
+                            popup: 'animate__animated animate__shakeX'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOut'
+                        }
+                    });
+                }
+            });
         });
-    }
+    });
 
 
 

@@ -1,34 +1,20 @@
-@php
-    use App\Models\User;
-    use App\Models\Book;
-    use App\Models\Rack;
-    use App\Models\Category;
-
-@endphp
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Users Index</title>
     @vite('resources/css/app.css')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous">
     </script>
-    <style>
-        .active {
-    color: red; /* Ganti dengan warna yang Anda inginkan */
-}
+</head >
 
-    </style>
-</head>
-<body class="font-poppins">
-    <!-- Main container for the dashboard -->
-    <div class="w-full bg-white shadow-lg">
+<body class="font-poppins bg-home">
+     <!-- Main container for the dashboard -->
+    <div class="w-full bg-white shadow-lg ">
         <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
             <div class="flex-shrink-0">
@@ -47,21 +33,18 @@
 
             <!-- Account Icon -->
             <div class="flex-shrink-0">
-                <a href="{{route('dashboard')}}"><svg class="w-[50px] h-[50px] text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <svg class="w-[50px] h-[50px] text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill="none" d="M0 0h24v24H0V0z"></path>
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z"></path>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z"></path>
                 </svg>
-                </a>
             </div>
         </div>
     </div>
-
-
     <!-- sidebar -->
     <div class="flex">
-        <aside class="w-[350px] h-full relative">
+        <aside class="w-[300px] h-full relative">
             <!-- Sidebar content -->
-            <div class="ml-4 mt-5 bg-DashboarAdmin w-[300px] h-[80px] rounded-xl flex items-center">
+            <div class="ml-4 mt-5 bg-DashboarAdmin w-[280px] h-[80px] rounded-xl flex items-center">
                 <div class="pl-4">
                     <img src="{{ asset('storage/avatar.jpg') }}" alt="" class="w-[60px] rounded-xl">
                 </div>
@@ -99,11 +82,11 @@
                     </a>
                     <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-12">
                         <img src="{{ asset('storage/KategoriBuku.svg') }}" alt="">
-                        <a href="{{route('borrow.index')}}"><p class="pt-0 pl-4 text-semibold">Kategori Buku</p></a>
+                        <p class="pt-0 pl-4 text-semibold">Kategori Buku</p>
                     </div>
                     <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-12">
                         <img src="{{ asset('storage/RakBuku.svg') }}" alt="">
-                        <a href="{{route('racks.index')}}"><p class="pt-0 pl-4 text-semibold">Rak</p></a>
+                        <p class="pt-0 pl-4 text-semibold">Rak</p>
                     </div>
                 </div>
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
@@ -129,19 +112,19 @@
                 </div>
             </div>
         </aside>
+    <div>
 
 
-
-        <main class="flex justify-between items-center fixed">
-            <h1 class="text-blue mt-8 ml-[350px] font-bold text-xl">Dashboard</h1>
+       <main class="flex justify-between items-center fixed ml-11">
+            <h1 class="text-blue mt-8  font-bold text-xl">Dashboard</h1>
             <h1 class="text-black mt-8 ml-2 font-medium text-sm">Control Panel</h1>
             
         </main>
 
         <!-- Container for the four sections -->
-        <div class="flex justify-center items-center space-x-4 mb-24 ">
+            <div class="flex justify-center items-center space-x-4 mb-24  mt-28 ml-10">
             <!-- Section 1 -->
-            <section id="1">
+            <section>
                 <a href="{{ route('users.index') }}">
                     <div class="flex w-[200px] h-[90px] bg-IsiDashboard rounded-lg relative">
                         <div class="grid grid-rows-2 flex-grow">
@@ -159,7 +142,7 @@
             </section>
 
             <!-- Section 2 -->
-            <section id="2">
+            <section >
                 <a href="{{ route('books.index') }}">
                 <div class="flex w-[200px] h-[90px] bg-IsiDashboard2 rounded-lg relative">
 
@@ -179,7 +162,7 @@
             </section>
 
             <!-- Section 3 -->
-            <section id="3">
+            <section >
                 <a href="{{ route('borrow.index') }}">
                 <div class="flex w-[200px] h-[90px] bg-IsiDashboard3 rounded-lg relative">
                     <div class="grid grid-rows-2 flex-grow">
@@ -197,7 +180,7 @@
             </section>
 
             <!-- Section 4 -->
-            <section id="4">
+            <section >
                 <div class="flex w-[200px] h-[90px] bg-IsiDashboard4 rounded-lg relative">
                     <div class="grid grid-rows-2 flex-grow">
                         <p class="font-bold text-2xl text-white px-3 pt-2">2</p>
@@ -212,15 +195,29 @@
                 </div>
             </section>
         </div>
+
+    <style>
+    .swal2-confirm.btn-success {
+        background-color: #28a745 !important;
+        color: white !important;
+        padding: 7px;
+        margin-left: 5px;
+        border-radius: 5px;
+    }
+    .swal2-cancel.btn-danger {
+        background-color: #dc3545 !important;
+        color: white !important;
+        padding: 7px;
+        margin-left: 5px;
+        border-radius: 5px;
+    }
+    </style>
+
     </div>
-</body>
-</html>
+    </div>
 
-
-
-
-
-<script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
     $(document).ready(function() {
     let currentOpenDropdown = null;
     let currentOpenDataElements = null;
@@ -287,9 +284,68 @@
         window.location.href = 'users/create'
     }
 
+    function pindahpage1() {
+        window.location.href = 'books/create'
+    }
+
+    const deleteForms = document.querySelectorAll('.delete-form');
+    deleteForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Apakah kamu yakin?",
+                text: "kamu tidak akan bisa melihat akun ini lagi",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+                reverseButtons: true,
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Terhapus!",
+                        text: "Your file has been deleted.",
+                        icon: "success",
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    }).then(() => {
+                        form.submit(); // Actually submit the form after the animation
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: "file kamu aman :)",
+                        icon: "error",
+                        showClass: {
+                            popup: 'animate__animated animate__shakeX'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOut'
+                        }
+                    });
+                }
+            });
+        });
+    });
+
 
 
 </script>
-
 </body>
+
 </html>

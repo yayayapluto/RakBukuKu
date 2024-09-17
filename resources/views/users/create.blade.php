@@ -42,7 +42,7 @@
                     <img src="{{ asset('storage/avatar.jpg') }}" alt="" class="w-[60px] rounded-xl">
                 </div>
                 <div class="ml-2 pt-2">
-                    <p class="text-blue font-bold text-sm pb-1">{{Auth::user()->nama}}</p>
+                    <p class="text-blue font-bold text-sm pb-1">Rayland Endri Kurniawan</p>
                     <p class="text-black font-medium text-xs pb-1">Admin</p>
                     <p class="text-blue font-semibold text-xs pb-1">onnline</p>
                 </div>
@@ -120,10 +120,95 @@
         <hr class="mb-8 bg-blue border border-blue text-blue ml-2">
 
 {{-- menu --}}
-        
+        <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data" class="ml-2 " id="userForm">
+            @csrf
+            @method('POST')
+        <div class="grid grid-cols-2">
+            <div class="">
+                <label for="nama" class="block font-semibold">Nama Pengguna</label>
+                <input type="text" id="nama" name="nama" required placeholder="nama pengguna" class="py-1 pr-44 rounded-md bg-SecondColor">
+            </div>
+
+            <div class="ml-8">
+                <label for="email" class="block font-semibold">Email:</label>
+                <input type="email" id="email" name="email" placeholder="email"  class="py-1 pr-24 rounded-md bg-SecondColor">
+            </div>
+
+            <div>
+                <label for="tempat_lahir" class="block font-semibold">Tempat Lahir:</label>
+                <input type="text" id="tempat_lahir" name="tempat_lahir" placeholder="masukan tempat lahir" class="py-1 pr-44 rounded-md bg-SecondColor">
+            </div>
+
+            <div  class="ml-8">
+                <label for="telepon" class="block font-semibold">Telepon:</label>
+                <input type="text" id="telepon" name="telepon" maxlength="25" class="py-1 pr-24 rounded-md bg-SecondColor" placeholder="cth:0887871817">
+            </div>
+
+
+
+
+            <div>
+                <label for="tanggal_lahir" class="block font-semibold">Tanggal Lahir:</label>
+                <input type="date" id="tanggal_lahir" name="tanggal_lahir" placeholder="tanggal lahir" class="py-1 pr-56 rounded-md bg-SecondColor">
+            </div>
+
+           
+
+         
+            <div  class="ml-8">
+                <label for="jenis_kelamin" class="font-semibold">Jenis Kelamin:</label>
+                <div class="block">
+                    <input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="pria" placeholder="pria">
+                    <label for="jenis_kelamin" class="">Pria</label>
+                </div>
+                
+                <div class="block">
+                    <input type="radio" id="jenis_kelamin" name="jenis_kelamin" value="pria" placeholder="wamita">
+                    <label for="jenis_kelamin" class="">Wanita</label>
+                </div>
+
+            </div>
+
+            <div class="">
+                <label for="alamat" class="block font-semibold">Alamat:</label>
+                <textarea id="alamat" name="alamat" placeholder="contoh: depok" class="py-1 pr-52 rounded-md bg-SecondColor"></textarea>
+            </div>
+
+
+            <div class="ml-8">
+                <label for="foto" class="block font-semibold">Foto:</label>
+                <input type="file" accept="image/*" id="foto" name="foto"></input>
+            </div>
+
+            <div  class="">
+                <label for="password"class="block font-semibold">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="password" class="py-1 pr-44 rounded-md bg-SecondColor">
+            </div>
+
+            <div  class="ml-8">
+                <label for="level"class="block font-semibold">level:</label>
+                <select name="level" id="level" class=" mt-1` pr-1 rounded-md bg-SecondColor">
+                    <option value="anggota">anggota</option>
+                    <option value="pustakawan">pustakawan</option>
+                </select>
+            </div>
+
+
+            <div class="">
+                
+            </div>
+
+            <div class="flex mt-2 justify-end mr-14">
+            <button type="submit" class="px-3 py-2  bg-blue rounded-md text-white font-semibold">Create</button>
+            </div>
+
+            
+        </div>
+        </form>
     </div>
 </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
     $(document).ready(function() {
     let currentOpenDropdown = null;
@@ -190,6 +275,24 @@
     function pindahpage() {
         window.location.href = 'users/create'
     }
+
+    document.getElementById('userForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Mencegah pengiriman form secara default
+    console.log("Form akan dikirim"); // Debug untuk memastikan event ini dipanggil
+
+    // Tampilkan SweetAlert
+    Swal.fire({
+        title: 'Pengguna berhasil didaftarkan',
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500
+    }).then(() => {
+        console.log("Mengirim form..."); // Debug untuk melihat kapan form dikirim
+        this.submit(); // Setelah SweetAlert selesai (tanpa menunggu konfirmasi), kirim form
+    });
+});
+
+
 
 
 

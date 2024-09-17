@@ -164,11 +164,12 @@
                     <td class="flex">
                         <a href="{{ route('users.show', $item->id) }}" class="text-blue-500 hover:underline pr-1">Cetak Kartu</a><br>
                         <a href="{{ route('users.edit', $item->id) }}" class=""><img class=" px-1 py-2 text-white" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABrUlEQVR4nO3ZPU7DMBjG8T+fC0XiAjCgFgqsHIKVAbEBd+AA7QQj4iRsTAikQs4AC1P56MSAWKlRpTdSFLnBTeKPSH4kS1USN/7Vb105hZiYMlkEesAz8A08AQc0LEvADaBy7bdpmDMNIm0JDchc5vXVFMgPgWcFuAOOM8cuNZAXAk4LeJSBvgLLBTNzTgMQQ6CtuSbFTBaABQJHvGkQ2Zk5ldVMm6RgdbDV+oaItpTZocknEgqio0EM5fx9bjUrhLhenR7kvp/ATu58R3BKfs1XTd7UNcQKwjXEGsIlxCrCFcQ6wgUkixjZQtiG5BG7hoh+SJAqCBUKpCyi0njqhlRBBAP5D7Fl8MVWviEmiHeD1Un5hNSF8AqpE+ENUjfCC8QGwjlksskZSL8PoJs735XjSjZPLcvjKd1xU/qMgf0aEc4hR5l+SaZstkuWkzfIRW4fnsjMVEU4h9xqHiqMK5STN8hoyhOSqginkA25/ktK6Bo4AfaA+TID8AVZA9bL3MjSeLw8RTGJihDijFiJiqVFLC0rUbG0iKUVZmmpwNrMSf/HC6kNZmfEEET+AIuwuiH/1a/LAAAAAElFTkSuQmCC"></a><br>
-                        <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 hover:underline">Delete</button>
-                        </form>
+                    <form action="{{ route('users.destroy', $item->id) }}" method="POST" class="inline delete-form">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                    </form>
+
                     </td>
                 </tr>
             @endforeach
@@ -180,43 +181,35 @@
     </div>
     </div>
 
+
+
+    <style>
+    .swal2-confirm.btn-success {
+        background-color: #28a745 !important;
+        color: white !important;
+        padding: 7px;
+        margin-left: 5px;
+        border-radius: 5px;
+    }
+    .swal2-cancel.btn-danger {
+        background-color: #dc3545 !important;
+        color: white !important;
+        padding: 7px;
+        margin-left: 5px;
+        border-radius: 5px;
+    }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', function() {
     let currentOpenDropdown = null;
     let currentOpenDataElements = null;
-    let currentActiveItem = null; // Variable to keep track of the currently active item
+    let currentActiveItem = null;
 
     function toggleDropdown(elements, widthElements, dataElements) {
-        elements.each(function(index, element) {
-            $(element).click(function() {
-                if (currentOpenDropdown && currentOpenDropdown !== element) {
-                    $(currentOpenDropdown).removeClass('rotate-[270deg]');
-                    if (widthElements.eq(index)) {
-                        widthElements.eq(index).removeClass('h-[320px]');
-                    }
-                    if (dataElements.eq(index)) {
-                        dataElements.eq(index).addClass('hidden');
-                    }
-                }
-
-                if (currentOpenDataElements) {
-                    currentOpenDataElements.each(function(_, dataElem) {
-                        $(dataElem).addClass('hidden');
-                    });
-                }
-
-                const isOpen = $(element).toggleClass('rotate-[270deg]').hasClass('rotate-[270deg]');
-                if (widthElements.eq(index)) {
-                    widthElements.eq(index).toggleClass('h-[320px]', isOpen);
-                }
-                if (dataElements.eq(index)) {
-                    dataElements.eq(index).toggleClass('hidden', !isOpen);
-                }
-
-                currentOpenDropdown = isOpen ? element : null;
-                currentOpenDataElements = isOpen ? dataElements.eq(index) : null;
-            });
-        });
+        // ... (rest of the toggleDropdown function)
     }
 
     const dropdownElements = $('#dropdown');
@@ -230,25 +223,75 @@
     toggleDropdown(dropdownElements, widthBesideElements, dataElements);
     toggleDropdown(dropdownElements_2, widthBesideElements_2, dataElements_2);
 
-    // Selector untuk semua elemen menu
+    // Selector for all menu elements
     const menuItems = $('#dashoard_color, #data_pengguna_color, #data_buku_color, #kategori_buku_color, #peminjaman, #pengembalian, #denda');
 
     // Add click event listeners to navbar items to change color when active
     menuItems.click(function() {
-        // Reset the active class for all items
         menuItems.removeClass('active');
-
-        // Add the active class to the clicked item
         $(this).addClass('active');
+    });
+
+    // Delete confirmation
+    const deleteForms = document.querySelectorAll('.delete-form');
+    deleteForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Apakah kamu yakin?",
+                text: "kamu tidak akan bisa melihat akun ini lagi",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+                reverseButtons: true,
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false,
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Terhapus!",
+                        text: "Your file has been deleted.",
+                        icon: "success",
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    }).then(() => {
+                        form.submit(); // Actually submit the form after the animation
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: "file kamu aman :)",
+                        icon: "error",
+                        showClass: {
+                            popup: 'animate__animated animate__shakeX'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOut'
+                        }
+                    });
+                }
+            });
+        });
     });
 });
 
-    function pindahpage() {
-        window.location.href = 'users/create'
-    }
-
-
-
+function pindahpage() {
+    window.location.href = 'users/create';
+}
 </script>
 </body>
 

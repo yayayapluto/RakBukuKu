@@ -123,7 +123,7 @@
 {{-- menu --}}
             <div>
         
-       <form action="{{ route('books.store') }}" method="POST">
+       <form action="{{ route('books.store') }}" method="POST" class="buat-akun">
     @csrf
     @method('POST')
 
@@ -210,7 +210,7 @@
     </div>
     </div>
 </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
     $(document).ready(function() {
     let currentOpenDropdown = null;
@@ -278,7 +278,19 @@
         window.location.href = 'users/create'
     }
 
-
+    const deleteForms = document.querySelectorAll('.buat-akun');
+    deleteForms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Buku terbuat",
+            icon: "success",
+            position: "top-end"
+        }).then(() => {
+                form.submit();
+            });
+        });
+    });
 
 </script>
 </body>
