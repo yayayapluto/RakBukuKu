@@ -82,7 +82,8 @@
                     </a>
                     <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-12">
                         <img src="{{ asset('storage/KategoriBuku.svg') }}" alt="">
-                        <p class="pt-0 pl-4 text-semibold">Kategori Buku</p>
+                        <a href="{{route('categories.index')}}"><p class="pt-0 pl-4 text-semibold cursor-pointer">Kategori Buku</p>
+                        </a>
                     </div>
                     <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-12">
                         <img src="{{ asset('storage/RakBuku.svg') }}" alt="">

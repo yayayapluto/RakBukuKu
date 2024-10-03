@@ -59,7 +59,7 @@
                 <!-- Menu Items -->
                 <div class="flex justify-start items-start pt-4 font-semibold text-sm pl-4">
                     <img src="{{ asset('storage/dashboard.svg') }}" alt="" class="w-[25px]"> 
-                    <p class="pt-1 pl-3 text-semibold">Dasboard</p>
+                    <a href="{{route("dashboard")}}"><p class="pt-1 pl-3 text-semibold">Dasboard</p></a>
                 </div>
                 <div class="flex justify-start items-start pt-3 font-semibold text-sm pl-4">
                     <img src="{{ asset('storage/Data_pengguna.svg') }}" alt="" class="w-[25px]"> 
@@ -132,8 +132,8 @@
             </div>
 
                 
-        <table border="" cellspacing="0" cellpadding="8" class="table-auto w-1/12 max-w-6xl mx-auto text-[10px] mb-5 rounded-lg overflow-hidden">
-        <thead class="bg-white">
+        <table border="" cellspacing="0" cellpadding="8" class=" rounded-lg overflow-hidden">
+        <thead class="bg-white ">
             <tr>
                 <th class="px-4 py-2">ID</th>
                 <th class="px-4 py-2">Nama</th>
@@ -209,7 +209,36 @@
     let currentActiveItem = null;
 
     function toggleDropdown(elements, widthElements, dataElements) {
-        // ... (rest of the toggleDropdown function)
+        elements.each(function(index, element) {
+            $(element).click(function() {
+                if (currentOpenDropdown && currentOpenDropdown !== element) {
+                    $(currentOpenDropdown).removeClass('rotate-[270deg]');
+                    if (widthElements.eq(index)) {
+                        widthElements.eq(index).removeClass('h-[320px]');
+                    }
+                    if (dataElements.eq(index)) {
+                        dataElements.eq(index).addClass('hidden');
+                    }
+                }
+
+                if (currentOpenDataElements) {
+                    currentOpenDataElements.each(function(_, dataElem) {
+                        $(dataElem).addClass('hidden');
+                    });
+                }
+
+                const isOpen = $(element).toggleClass('rotate-[270deg]').hasClass('rotate-[270deg]');
+                if (widthElements.eq(index)) {
+                    widthElements.eq(index).toggleClass('h-[320px]', isOpen);
+                }
+                if (dataElements.eq(index)) {
+                    dataElements.eq(index).toggleClass('hidden', !isOpen);
+                }
+
+                currentOpenDropdown = isOpen ? element : null;
+                currentOpenDataElements = isOpen ? dataElements.eq(index) : null;
+            });
+        });
     }
 
     const dropdownElements = $('#dropdown');

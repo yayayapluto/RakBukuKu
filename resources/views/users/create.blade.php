@@ -14,7 +14,10 @@
 </head>
 
 <body class="font-poppins bg-home">
-
+    @forelse ($errors->all() as $e)
+    <li>{{$e}}</li>
+    @empty
+    @endforelse
 
     <!-- Main container for the dashboard -->
     <div class="w-full bg-white shadow-lg">
@@ -273,7 +276,7 @@
 });
 
     function pindahpage() {
-        window.location.href = 'users/create'
+        window.location.href = 'users/index'
     }
 
     document.getElementById('userForm').addEventListener('submit', function(e) {
